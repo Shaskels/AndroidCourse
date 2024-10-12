@@ -14,7 +14,7 @@ class ItemActivity : AppCompatActivity() {
         val text1 : TextView = findViewById(R.id.text1)
         val text2 : TextView = findViewById(R.id.text2)
 
-        text1.text = intent.getStringExtra("text1")
-        text2.text = intent.getStringExtra("text2")
+        text1.text = intent.getStringExtra(CustomAdapter.TEXT1_KEY)
+        text2.text = intent.getStringExtra(CustomAdapter.TEXT2_KEY)
     }
 }

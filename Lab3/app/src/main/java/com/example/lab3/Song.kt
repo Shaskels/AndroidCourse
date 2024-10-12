@@ -1,7 +1,6 @@
 package com.example.lab3
 
 class Song(var name : String, var authorName : String) : ListItem {
-    override fun getListItemType(): Int {
-        return ListItem.Type.Song.ordinal
-    }
+    override val type: Int
+        get() = ListItem.Type.SONG.value
 }

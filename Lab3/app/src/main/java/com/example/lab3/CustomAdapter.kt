@@ -14,18 +14,21 @@ class CustomAdapter(private val context : Context) : RecyclerView.Adapter<Custom
 
     private val items = ArrayList<ListItem>()
 
+    companion object{
+        const val TEXT1_KEY = "text1"
+        const val TEXT2_KEY = "text2"
+    }
+
     abstract class BaseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        abstract fun bind(item: ListItem)
     }
 
     class ViewHolderSong(itemView: View) : BaseViewHolder(itemView){
         private val name: TextView = itemView.findViewById(R.id.songName)
         private val author: TextView = itemView.findViewById(R.id.authorName)
 
-        override fun bind(item: ListItem){
-            val song = item as Song
-            name.text = song.name
-            author.text = song.authorName
+        fun bind(item: Song){
+            name.text = item.name
+            author.text = item.authorName
         }
     }
 
@@ -34,11 +37,10 @@ class CustomAdapter(private val context : Context) : RecyclerView.Adapter<Custom
         private val title: TextView = itemView.findViewById(R.id.bannerTitle)
         private val disc: TextView = itemView.findViewById(R.id.bannerDisc)
 
-        override fun bind(item: ListItem){
-            val advertisement = item as Advertisement
-            theme.text = advertisement.theme
-            title.text = advertisement.title
-            disc.text = advertisement.disc
+        fun bind(item: Advertisement){
+            theme.text = item.theme
+            title.text = item.title
+            disc.text = item.disc
         }
     }
 
@@ -48,20 +50,21 @@ class CustomAdapter(private val context : Context) : RecyclerView.Adapter<Custom
         items.clear()
         items.addAll(newItems)
         diffCourses.dispatchUpdatesTo(this)
+        notifyItemRangeChanged(0, newItems.size)
     }
 
     override fun getItemViewType(position: Int): Int {
-        return items[position].getListItemType()
+        return items[position].type
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
         when (viewType) {
-            ListItem.Type.Song.ordinal -> {
+            ListItem.Type.SONG.value -> {
                 val view = LayoutInflater.from(parent.context)
                     .inflate(R.layout.song_in_list, parent, false)
                 return ViewHolderSong(view)
             }
-            ListItem.Type.Advertisement.ordinal -> {
+            ListItem.Type.ADVERTISEMENT.value -> {
                 val view = LayoutInflater.from(parent.context)
                     .inflate(R.layout.advertisement_item, parent, false)
                 return ViewHolderAdvertisement(view)
@@ -75,18 +78,25 @@ class CustomAdapter(private val context : Context) : RecyclerView.Adapter<Custom
     }
 
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
-        holder.bind(items[position])
+        if (items[position] is Song){
+            val h = holder as ViewHolderSong
+            h.bind(items[position] as Song)
+        }
+        else if (items[position] is Advertisement){
+            val h = holder as ViewHolderAdvertisement
+            h.bind(items[position] as Advertisement)
+        }
         holder.itemView.setOnClickListener{
             val intent = Intent(context, ItemActivity::class.java)
             if (items[position] is Song) {
                 val item = items[position] as Song
-                intent.putExtra("text1", item.name)
-                intent.putExtra("text2", item.authorName)
+                intent.putExtra(TEXT1_KEY, item.name)
+                intent.putExtra(TEXT2_KEY, item.authorName)
             }
-            else {
+            else if (items[position] is Advertisement) {
                 val item = items[position] as Advertisement
-                intent.putExtra("text1", item.title)
-                intent.putExtra("text2", item.disc)
+                intent.putExtra(TEXT1_KEY, item.title)
+                intent.putExtra(TEXT2_KEY, item.disc)
             }
             context.startActivity(intent)
         }
