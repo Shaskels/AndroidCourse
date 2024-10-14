@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="72dp"
+    android:layout_marginBottom="16dp"
+    android:backgroundTint="@color/item_color"
+    android:background="@drawable/rounded_song">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imageView"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginVertical="12dp"
+        app:shapeAppearanceOverlay="@style/roundedImageView"
+        android:src="@drawable/m1000x1000"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="44dp"
+        android:orientation="vertical"
+        app:layout_constraintLeft_toRightOf="@id/imageView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/button_wrapper"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp">
+        <TextView
+            android:id="@+id/songName"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:fontFamily="@font/roboto_medium"
+            android:textColor="@color/text"
+            android:lineHeight="24dp"
+            android:textSize="16sp"
+            android:text="No Hay Ley" />
+
+        <TextView
+            android:id="@+id/authorName"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="@color/pale_text"
+            android:letterSpacing="0.02"
+            android:textSize="14sp"
+            android:text="Kali Uchis" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/button_wrapper"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="horizontal"
+        android:layout_margin="16dp">
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="8dp"
+            android:backgroundTint="@color/item_color"
+            app:srcCompat="@drawable/baseline_play_circle_filled_24" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
