@@ -14,10 +14,7 @@ class CustomAdapter(private val context : Context) : RecyclerView.Adapter<Custom
 
     private val items = ArrayList<ListItem>()
 
-    companion object{
-        const val TEXT1_KEY = "text1"
-        const val TEXT2_KEY = "text2"
-    }
+
 
     abstract class BaseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     }
@@ -90,13 +87,13 @@ class CustomAdapter(private val context : Context) : RecyclerView.Adapter<Custom
             val intent = Intent(context, ItemActivity::class.java)
             if (items[position] is Song) {
                 val item = items[position] as Song
-                intent.putExtra(TEXT1_KEY, item.name)
-                intent.putExtra(TEXT2_KEY, item.authorName)
+                intent.putExtra(ItemActivity.UP_TEXT_KEY, item.name)
+                intent.putExtra(ItemActivity.DOWN_TEXT_KEY, item.authorName)
             }
             else if (items[position] is Advertisement) {
                 val item = items[position] as Advertisement
-                intent.putExtra(TEXT1_KEY, item.title)
-                intent.putExtra(TEXT2_KEY, item.disc)
+                intent.putExtra(ItemActivity.UP_TEXT_KEY, item.title)
+                intent.putExtra(ItemActivity.DOWN_TEXT_KEY, item.disc)
             }
             context.startActivity(intent)
         }
