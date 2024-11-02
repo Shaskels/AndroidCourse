@@ -21,7 +21,18 @@ object MaybeOperators {
          * Преобразовать результат получаемый из [worker] в Maybe поток.
          */
         fun solve(worker: Worker): Maybe<String> {
-            return Maybe.fromAction { worker.setResultListener { s-> println(s) }}
+
+            return Maybe.create { emitter ->
+                worker.setResultListener { s ->
+                    run {
+                        if (s != null) {
+                            emitter.onSuccess(s)
+                        } else {
+                            emitter.onComplete()
+                        }
+                    }
+                }
+            }
         }
 
         interface Worker {

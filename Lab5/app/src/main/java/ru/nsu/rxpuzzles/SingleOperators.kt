@@ -25,7 +25,14 @@ object SingleOperators {
          * При успешной инициализации успешно завершать поток с передачей имени чата.
          * При фатальной ошибке инициализации завершать поток с ошибкой.
          */
-        fun solve(chat: Chat): Single<String> = TODO()
+        fun solve(chat: Chat): Single<String> {
+            return Single.create { emitter ->
+                chat.setInitListener(MessageListener(
+                    { m -> emitter.onSuccess(m) },
+                    { e -> emitter.onError(e) }
+                ))
+            }
+        }
 
         interface Chat {
 
@@ -46,7 +53,7 @@ object SingleOperators {
          * Сделать так, чтобы при повторной подписке возвращалось новое значение.
          */
         fun solve(provider: DataProvider): Single<Int> {
-            return Single.fromCallable{ provider.get() }
+            return Single.fromCallable { provider.get() }
         }
 
         interface DataProvider {
@@ -94,7 +101,7 @@ object SingleOperators {
          * Предполагается, что запросы getId(), getName(), getAge() уже выполняются на разных тредах.
          */
         fun solve(userApi: UserApi): Single<User> {
-            val zipper = Function3<Long, String, Int, User> { a,b,c -> User(a,b,c) }
+            val zipper = Function3<Long, String, Int, User> { a, b, c -> User(a, b, c) }
             return Single.zip(userApi.getId(), userApi.getName(), userApi.getAge(), zipper)
         }
 

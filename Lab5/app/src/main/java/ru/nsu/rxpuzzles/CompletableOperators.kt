@@ -22,7 +22,7 @@ object CompletableOperators {
         /**
          * Вернуть Completable, который моментально завершает работу с любой ошибкой.
          */
-        fun solve(): Completable{
+        fun solve(): Completable {
             val exception = Exception("error!")
             return Completable.error(exception)
         }
@@ -34,7 +34,7 @@ object CompletableOperators {
          * Преобразовать вызов блокирующей поток операции в Completable.
          */
         fun solve(worker: Worker): Completable {
-            return Completable.fromRunnable{ worker.doWork() }
+            return Completable.fromRunnable { worker.doWork() }
         }
 
         interface Worker {
@@ -60,7 +60,7 @@ object CompletableOperators {
          * Последовательно выполнить [first], [second] и [third].
          */
         fun solve(first: Completable, second: Completable, third: Completable): Completable {
-            return Completable.concat(listOf(first, second,third))
+            return Completable.concat(listOf(first, second, third))
         }
     }
 
@@ -69,8 +69,8 @@ object CompletableOperators {
         /**
          * Переключить операторы, которые будут идти ниже по цепочке на [scheduler].
          */
-        fun solve(source: Completable, scheduler: Scheduler): Completable{
-            return  source.observeOn(scheduler)
+        fun solve(source: Completable, scheduler: Scheduler): Completable {
+            return source.observeOn(scheduler)
         }
     }
 
@@ -79,8 +79,8 @@ object CompletableOperators {
         /**
          * Переключить выполнение всей цепочки на [scheduler].
          */
-        fun solve(source: Completable, scheduler: Scheduler): Completable{
-            return  source.subscribeOn(scheduler)
+        fun solve(source: Completable, scheduler: Scheduler): Completable {
+            return source.subscribeOn(scheduler)
         }
     }
 }

@@ -93,7 +93,14 @@ object ObservableOperators {
          * Установить слушателя и преобразовать сообщения, получемые из чата в поток сообщений.
          * При фатальной ошибке чата завершать поток с ошибкой.
          */
-        fun solve(chat: Chat): Observable<String> = TODO()
+        fun solve(chat: Chat): Observable<String> {
+            return Observable.create { emitter ->
+                chat.setMessageListener(MessageListener(
+                    { m -> emitter.onNext(m) },
+                    { e -> emitter.onError(e) }
+                ))
+            }
+        }
 
         interface Chat {
 
@@ -112,7 +119,7 @@ object ObservableOperators {
          * Оставить только нечетные числа из [source].
          */
         fun solve(source: Observable<Int>): Observable<Int> {
-            return source.filter{ it % 2 !=0 }
+            return source.filter { it % 2 != 0 }
         }
     }
 
@@ -164,7 +171,7 @@ object ObservableOperators {
          * Необходимо реализовать поток с упакованными пирогами. Горелые пироги не пропускать.
          */
         fun solve(source: Observable<Pie>): Observable<Package> {
-            return source.filter{!it.burnt}.map { Package(it) }
+            return source.filter { !it.burnt }.map { Package(it) }
         }
 
         data class Pie(val color: String, val burnt: Boolean)
@@ -218,7 +225,7 @@ object ObservableOperators {
          * Пример выходного потока: "1", "a", "2", "b", "3", "c"
          */
         fun solve(digits: Observable<String>, letters: Observable<String>): Observable<String> {
-            return Observable.merge(listOf(digits,letters))
+            return Observable.merge(listOf(digits, letters))
         }
     }
 
@@ -233,7 +240,7 @@ object ObservableOperators {
          * "11", "22", "33"
          */
         fun solve(first: Observable<Int>, second: Observable<Int>): Observable<Int> {
-            val zipper = BiFunction<Int, Int, Int>{a,b -> a+b}
+            val zipper = BiFunction<Int, Int, Int> { a, b -> a + b }
             return Observable.zip(first, second, zipper)
         }
     }
