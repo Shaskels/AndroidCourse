@@ -7,9 +7,6 @@ class GetSampleStringFromRemoteUseCase @Inject constructor(
 	private val repository: SampleStringRepository
 	) {
 
-	//TODO di
-//	private val repository: SampleStringRepository = SampleStringRepositoryImpl()
-
 	operator fun invoke(): String {
 		val fromRemote = repository.getFromRemote()
 		val repoInstanceHash = repository.hashCode()

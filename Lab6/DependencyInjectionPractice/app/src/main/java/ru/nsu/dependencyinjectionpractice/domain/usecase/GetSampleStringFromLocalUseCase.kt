@@ -8,9 +8,6 @@ class GetSampleStringFromLocalUseCase @Inject constructor(
 	private val repository: SampleStringRepository
 	) {
 
-//	//TODO di
-//	private val repository: SampleStringRepository = SampleStringRepositoryImpl()
-
 	operator fun invoke(): String {
 		val fromLocal = repository.getFromLocal()
 		val repoInstanceHash = repository.hashCode()

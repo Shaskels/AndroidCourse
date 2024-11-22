@@ -1,7 +1,8 @@
 package ru.nsu.dependencyinjectionpractice
 
 import android.app.Application
-import android.content.Context
+import ru.nsu.dependencyinjectionpractice.di.AppComponent
+import ru.nsu.dependencyinjectionpractice.di.DaggerAppComponent
 
 class HomeworkApplication : Application(){
 
@@ -13,9 +14,3 @@ class HomeworkApplication : Application(){
         appComponent = DaggerAppComponent.create()
     }
 }
-
-val Context.appComponent: AppComponent
-    get() = when (this) {
-        is HomeworkApplication -> appComponent
-        else -> applicationContext.appComponent
-    }

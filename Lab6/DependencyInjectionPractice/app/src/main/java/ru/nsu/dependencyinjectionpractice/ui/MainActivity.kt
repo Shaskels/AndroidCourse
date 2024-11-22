@@ -5,17 +5,15 @@ import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import ru.nsu.dependencyinjectionpractice.appComponent
+import ru.nsu.dependencyinjectionpractice.HomeworkApplication
 import ru.nsu.dependencyinjectionpractice.databinding.ActivityMainBinding
 import ru.nsu.dependencyinjectionpractice.presentation.MainState
 import ru.nsu.dependencyinjectionpractice.presentation.MainViewModel
 import ru.nsu.dependencyinjectionpractice.presentation.MainViewModelFactory
-import ru.nsu.dependencyinjectionpractice.presentation.MultiViewModelFactory
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
 
-	//TODO di для вьюмодели
 	private val viewModel: MainViewModel by viewModels() {
 		factory
 	}
@@ -26,7 +24,7 @@ class MainActivity : AppCompatActivity() {
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
-		appComponent.inject(this)
+		(applicationContext as HomeworkApplication).appComponent.inject(this)
 		setContentView(binding.root)
 		binding.loadButton.setOnClickListener {
 			viewModel.loadStrings()

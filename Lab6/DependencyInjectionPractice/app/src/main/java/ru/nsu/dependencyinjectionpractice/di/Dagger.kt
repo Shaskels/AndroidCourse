@@ -1,4 +1,4 @@
-package ru.nsu.dependencyinjectionpractice
+package ru.nsu.dependencyinjectionpractice.di
 
 import androidx.lifecycle.ViewModel
 import dagger.Binds
@@ -6,6 +6,7 @@ import dagger.Component
 import dagger.Module
 import dagger.Provides
 import dagger.multibindings.IntoMap
+import ru.nsu.dependencyinjectionpractice.ViewModelKey
 import ru.nsu.dependencyinjectionpractice.data.datasource.SampleStringDataSource
 import ru.nsu.dependencyinjectionpractice.data.datasource.SampleStringLocalDataSource
 import ru.nsu.dependencyinjectionpractice.data.datasource.SampleStringRemoteDataSource
@@ -16,7 +17,7 @@ import ru.nsu.dependencyinjectionpractice.ui.MainActivity
 import javax.inject.Named
 import javax.inject.Singleton
 
-@Component(modules = [UiModule::class])
+@Component(modules = [PresentationModule::class])
 @Singleton
 interface AppComponent{
     fun inject(activity: MainActivity)
@@ -41,10 +42,9 @@ class DataModule{
 @Module(includes = [DataModule::class])
 interface DomainModule{
 
-    @Suppress("FunctionName")
     @Binds
     @Singleton
-    fun bindSampleStringRepositoryImpl_to_SampleStringRepository(
+    fun bindSampleStringRepository(
         sampleStringRepositoryImpl: SampleStringRepositoryImpl
     ): SampleStringRepository
 }
@@ -54,11 +54,5 @@ interface PresentationModule{
     @Binds
     @[IntoMap ViewModelKey(MainViewModel::class)]
     fun provideMainViewModel(mainViewModel: MainViewModel) : ViewModel
-
-}
-
-@Module(includes = [PresentationModule::class])
-class UiModule{
-
 
 }
