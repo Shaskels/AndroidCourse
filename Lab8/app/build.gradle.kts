@@ -8,6 +8,15 @@ android {
     namespace = "com.example.lab7"
     compileSdk = 34
 
+    signingConfigs{
+        create("releaseConfig") {
+            storeFile = file("key.jks")
+            keyAlias = "key0"
+            storePassword = "123456"
+            keyPassword = "123456"
+        }
+    }
+
     defaultConfig {
         applicationId = "com.example.lab7"
         minSdk = 24
@@ -29,7 +38,7 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            signingConfig = signingConfigs.getByName("debug")
+            signingConfig = signingConfigs.getByName("releaseConfig")
         }
         debug {
             applicationIdSuffix = ".debug"
