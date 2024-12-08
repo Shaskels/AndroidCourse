@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.lab7.domain.presentation.ContactFromLocal
+import com.example.lab7.presentation.ContactFromLocal
 
 @Database(entities = [ContactFromLocal::class], version = 1)
 abstract class MainDb : RoomDatabase() {

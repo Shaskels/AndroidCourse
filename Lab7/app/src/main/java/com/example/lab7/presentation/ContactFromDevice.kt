@@ -1,4 +1,4 @@
-package com.example.lab7.domain.presentation
+package com.example.lab7.presentation
 
 data class ContactFromDevice(
     var id: Int? = null,

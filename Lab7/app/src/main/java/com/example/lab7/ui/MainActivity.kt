@@ -17,7 +17,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var permissionLauncher: ActivityResultLauncher<String>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        (applicationContext as ContactsApplication).appComponent.inject(this)
         setContentView(R.layout.activity_main)
         permissionLauncher =
             registerForActivityResult(ActivityResultContracts.RequestPermission()) {

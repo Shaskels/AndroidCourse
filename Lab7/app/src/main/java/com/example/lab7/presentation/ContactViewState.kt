@@ -1,4 +1,4 @@
-package com.example.lab7.domain.presentation
+package com.example.lab7.presentation
 
 sealed class ContactViewState {
     object Loading : ContactViewState()

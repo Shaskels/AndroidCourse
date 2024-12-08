@@ -13,10 +13,10 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.lab7.ContactsApplication
 import com.example.lab7.ui.ContactsListFragment.Companion.CONTACT_LIST_FRAGMENT_IN_BACK_STACK
 import com.example.lab7.R
-import com.example.lab7.domain.presentation.ContactFromLocal
-import com.example.lab7.domain.presentation.ContactViewModel
-import com.example.lab7.domain.presentation.ContactViewState
-import com.example.lab7.domain.presentation.ContactsListViewModel
+import com.example.lab7.presentation.ContactFromLocal
+import com.example.lab7.presentation.ContactViewModel
+import com.example.lab7.presentation.ContactViewState
+import com.example.lab7.presentation.ContactsListViewModel
 
 class ContactFromLocalFragment : Fragment() {
 

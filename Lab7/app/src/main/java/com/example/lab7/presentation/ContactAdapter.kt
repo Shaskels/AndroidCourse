@@ -1,4 +1,4 @@
-package com.example.lab7.domain.presentation
+package com.example.lab7.presentation
 
 import android.os.Bundle
 import android.view.LayoutInflater

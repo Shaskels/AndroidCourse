@@ -1,4 +1,4 @@
-package com.example.lab7.domain.presentation
+package com.example.lab7.presentation
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

@@ -9,9 +9,9 @@ import com.example.lab7.data.datasource.ContactListLocalDataSource
 import com.example.lab7.data.datasource.DeviceContactListDataSource
 import com.example.lab7.data.datasource.RoomContactListDataSource
 import com.example.lab7.data.repository.ContactListRepositoryImpl
-import com.example.lab7.domain.presentation.ContactViewModel
-import com.example.lab7.domain.presentation.ContactsListViewModel
-import com.example.lab7.domain.presentation.ViewModelFactory
+import com.example.lab7.presentation.ContactViewModel
+import com.example.lab7.presentation.ContactsListViewModel
+import com.example.lab7.presentation.ViewModelFactory
 import com.example.lab7.domain.repository.ContactListRepository
 import dagger.Binds
 import dagger.BindsInstance

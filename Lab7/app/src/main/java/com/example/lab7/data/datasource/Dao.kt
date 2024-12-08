@@ -3,7 +3,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
-import com.example.lab7.domain.presentation.ContactFromLocal
+import com.example.lab7.presentation.ContactFromLocal
 import io.reactivex.Completable
 import io.reactivex.Single
 

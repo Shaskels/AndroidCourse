@@ -1,7 +1,7 @@
 package com.example.lab7.domain.repository
 
-import com.example.lab7.domain.presentation.ContactFromDevice
-import com.example.lab7.domain.presentation.ContactFromLocal
+import com.example.lab7.presentation.ContactFromDevice
+import com.example.lab7.presentation.ContactFromLocal
 import io.reactivex.Completable
 import io.reactivex.Observable
 

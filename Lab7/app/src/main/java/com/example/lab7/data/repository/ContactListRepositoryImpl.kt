@@ -1,9 +1,9 @@
 package com.example.lab7.data.repository
 
 import com.example.lab7.data.datasource.ContactListDeviceDataSource
-import com.example.lab7.domain.presentation.ContactFromLocal
+import com.example.lab7.presentation.ContactFromLocal
 import com.example.lab7.data.datasource.ContactListLocalDataSource
-import com.example.lab7.domain.presentation.ContactFromDevice
+import com.example.lab7.presentation.ContactFromDevice
 import com.example.lab7.domain.repository.ContactListRepository
 import io.reactivex.Completable
 import io.reactivex.Observable

@@ -6,7 +6,7 @@ import android.content.Context
 import android.content.pm.PackageManager
 import android.provider.ContactsContract
 import android.util.Log
-import com.example.lab7.domain.presentation.ContactFromDevice
+import com.example.lab7.presentation.ContactFromDevice
 import io.reactivex.Observable
 
 class DeviceContactListDataSource(private val context: Context) : ContactListDeviceDataSource {

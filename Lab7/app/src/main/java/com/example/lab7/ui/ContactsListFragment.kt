@@ -11,11 +11,11 @@ import androidx.fragment.app.commit
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.lab7.domain.presentation.ContactAdapter
+import com.example.lab7.presentation.ContactAdapter
 import com.example.lab7.ContactsApplication
 import com.example.lab7.R
-import com.example.lab7.domain.presentation.ContactsListViewState
-import com.example.lab7.domain.presentation.ContactsListViewModel
+import com.example.lab7.presentation.ContactsListViewState
+import com.example.lab7.presentation.ContactsListViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class ContactsListFragment() : Fragment() {

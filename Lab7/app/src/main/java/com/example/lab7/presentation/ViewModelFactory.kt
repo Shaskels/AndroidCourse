@@ -1,4 +1,4 @@
-package com.example.lab7.domain.presentation
+package com.example.lab7.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
