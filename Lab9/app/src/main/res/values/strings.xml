@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Lab9</string>
+    <string name="refresh_button_description">Обновить</string>
+    <string name="list_name">Валюты</string>
+    <string name="edit_amount_hint">Введите сумму</string>
+    <string name="convert_button_name">Конвертировать</string>
+    <string name="ruble">руб.</string>
+    <string name="some_text">Some Text</string>
+    <string name="exchange_rate_text">Курс</string>
+</resources>
